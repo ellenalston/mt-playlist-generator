@@ -1,0 +1,17 @@
+INSERT INTO genres(genre_name) VALUES
+('Big Band'),
+('Blues'),
+('Calypso'),
+('Chicano Rock'),
+('Country'),
+('Doo-Wop'),
+('Folk'),
+('Honky Tonk'),
+('Jazz'),
+('Pop'),
+('Rhythm and Blues'),
+('Rock and Roll'),
+('Rockabilly'),
+('Standards'),
+('Swing'),
+('Western');
