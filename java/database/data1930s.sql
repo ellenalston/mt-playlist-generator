@@ -1,5 +1,5 @@
-INSERT INTO songs (song_title, artist, release_year, song_key, beats_per_minute) VALUES
-('Cheek to Cheek', 'Fred Astaire', 1935, 'F major', 112);
+INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_minute, youtube) VALUES
+('Cheek to Cheek', 'Fred Astaire', 1935, 'C major','4/4', 83, 'https://www.youtube.com/watch?v=0QYdcHQXwdM');
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Cheek to Cheek' AND artist = 'Fred Astaire'),

@@ -21,7 +21,9 @@ CREATE TABLE songs (
 	artist varchar,
 	release_year int NOT NULL,
 	song_key varchar,
+	meter varchar,
 	beats_per_minute int,
+	youtube varchar,
 	CONSTRAINT pk_songs PRIMARY KEY(song_id)
 );
 
