@@ -1,5 +1,11 @@
 package com.techelevator.dao;
 
-public interface SongDao {
+import com.techelevator.model.Song;
 
+import java.util.List;
+
+public interface SongDao {
+    public List<Song> getSongs();
+    public List<String> getGenres();
+    public List<String> getThemes();
 }

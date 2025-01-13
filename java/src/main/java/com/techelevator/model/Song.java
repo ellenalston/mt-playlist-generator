@@ -12,6 +12,24 @@ public class Song {
     private String meter;
     private int bpm;
     private String youtube;
+    List<String> genres;
+    List<String> themes;
+
+    public List<String> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<String> genres) {
+        this.genres = genres;
+    }
+
+    public List<String> getThemes() {
+        return themes;
+    }
+
+    public void setThemes(List<String> themes) {
+        this.themes = themes;
+    }
 
     public int getId() {
         return id;

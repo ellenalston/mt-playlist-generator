@@ -123,22 +123,22 @@ INSERT INTO song_theme (song_id, theme_id) VALUES
 
 --COLD, COLD HEART--
 INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_minute, youtube) VALUES
-('Cold, Cold Heart', 'Hank Williams, Sr.', 1951, 'D major', '4/4', 116, 'https://www.youtube.com/watch?v=cQmzp-NA5PM');
+('Cold, Cold Heart', 'Hank Williams', 1951, 'D major', '4/4', 116, 'https://www.youtube.com/watch?v=cQmzp-NA5PM');
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
-((SELECT song_id FROM songs WHERE song_title = 'Cold, Cold Heart' AND artist = 'Hank Williams, Sr.'),
+((SELECT song_id FROM songs WHERE song_title = 'Cold, Cold Heart' AND artist = 'Hank Williams'),
  (SELECT genre_id FROM genres WHERE genre_name = 'Country')),
-((SELECT song_id FROM songs WHERE song_title = 'Cold, Cold Heart' AND artist = 'Hank Williams, Sr.'),
+((SELECT song_id FROM songs WHERE song_title = 'Cold, Cold Heart' AND artist = 'Hank Williams'),
  (SELECT genre_id FROM genres WHERE genre_name = 'Honky Tonk'));
 
  INSERT INTO song_theme (song_id, theme_id) VALUES
- ((SELECT song_id FROM songs WHERE song_title = 'Cold, Cold Heart' AND artist = 'Hank Williams, Sr.'),
+ ((SELECT song_id FROM songs WHERE song_title = 'Cold, Cold Heart' AND artist = 'Hank Williams'),
   (SELECT theme_id FROM themes WHERE theme_name = 'Heartache')),
- ((SELECT song_id FROM songs WHERE song_title = 'Cold, Cold Heart' AND artist = 'Hank Williams, Sr.'),
+ ((SELECT song_id FROM songs WHERE song_title = 'Cold, Cold Heart' AND artist = 'Hank Williams'),
   (SELECT theme_id FROM themes WHERE theme_name = 'Pain')),
- ((SELECT song_id FROM songs WHERE song_title = 'Cold, Cold Heart' AND artist = 'Hank Williams, Sr.'),
+ ((SELECT song_id FROM songs WHERE song_title = 'Cold, Cold Heart' AND artist = 'Hank Williams'),
   (SELECT theme_id FROM themes WHERE theme_name = 'Betrayal')),
- ((SELECT song_id FROM songs WHERE song_title = 'Cold, Cold Heart' AND artist = 'Hank Williams, Sr.'),
+ ((SELECT song_id FROM songs WHERE song_title = 'Cold, Cold Heart' AND artist = 'Hank Williams'),
   (SELECT theme_id FROM themes WHERE theme_name = 'Regret'));
 
 -- COME FLY WITH ME --
@@ -279,18 +279,18 @@ INSERT INTO song_theme (song_id, theme_id) VALUES
 
 -- HEY GOOD LOOKIN' --
 INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_minute, youtube) VALUES
-('Hey Good Lookin''', 'Hank Williams, Sr.', 1951, 'C major', '4/4', 142, 'https://www.youtube.com/watch?v=lfS9BZ4Ze0I');
+('Hey Good Lookin''', 'Hank Williams', 1951, 'C major', '4/4', 142, 'https://www.youtube.com/watch?v=lfS9BZ4Ze0I');
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
-((SELECT song_id FROM songs WHERE song_title = 'Hey Good Lookin''' AND artist = 'Hank Williams, Sr.'),
+((SELECT song_id FROM songs WHERE song_title = 'Hey Good Lookin''' AND artist = 'Hank Williams'),
  (SELECT genre_id FROM genres WHERE genre_name = 'Country')),
-((SELECT song_id FROM songs WHERE song_title = 'Hey Good Lookin''' AND artist = 'Hank Williams, Sr.'),
+((SELECT song_id FROM songs WHERE song_title = 'Hey Good Lookin''' AND artist = 'Hank Williams'),
  (SELECT genre_id FROM genres WHERE genre_name = 'Honky Tonk'));
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
-((SELECT song_id FROM songs WHERE song_title = 'Hey Good Lookin''' AND artist = 'Hank Williams, Sr.'),
+((SELECT song_id FROM songs WHERE song_title = 'Hey Good Lookin''' AND artist = 'Hank Williams'),
  (SELECT theme_id FROM themes WHERE theme_name = 'Love')),
-((SELECT song_id FROM songs WHERE song_title = 'Hey Good Lookin''' AND artist = 'Hank Williams, Sr.'),
+((SELECT song_id FROM songs WHERE song_title = 'Hey Good Lookin''' AND artist = 'Hank Williams'),
  (SELECT theme_id FROM themes WHERE theme_name = 'Infatuation'));
 
 -- HIGH HOPES --
@@ -412,6 +412,7 @@ INSERT INTO song_theme (song_id, theme_id) VALUES
  (SELECT theme_id FROM themes WHERE theme_name = 'Love')),
 ((SELECT song_id FROM songs WHERE song_title = 'Love Me Tender' AND artist = 'Elvis Presley'),
  (SELECT theme_id FROM themes WHERE theme_name = 'Longing'));
+
 -- LOVE POTION NO. 9 --
 INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_minute, youtube) VALUES
 ('Love Potion No. 9', 'The Clovers', 1959, 'A minor', '4/4', 130, 'https://www.youtube.com/watch?v=h8KDknyNzsw');
