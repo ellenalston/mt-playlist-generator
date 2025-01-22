@@ -41,8 +41,9 @@
             </span>
           </button>
           <div v-if="showDropdown.keys" class="dropdown-menu">
+            <input v-model="filters.searchKey" placeholder="Search Keys" class="filter-search" />
             <div class="scrollable-list">
-              <div v-for="key in keys" :key="key" class="checkbox-item">
+              <div v-for="key in filteredKeys" :key="key" class="checkbox-item">
                 <input type="checkbox" :id="key" :value="key" v-model="filters.keys" />
                 <label :for="key">{{ key }}</label>
               </div>
@@ -62,8 +63,9 @@
             </span>
           </button>
           <div v-if="showDropdown.genres" class="dropdown-menu">
+            <input v-model="filters.searchGenre" placeholder="Search Genres" class="filter-search" />
             <div class="scrollable-list">
-              <div v-for="genre in genres" :key="genre" class="checkbox-item">
+              <div v-for="genre in filteredGenres" :key="genre" class="checkbox-item">
                 <input type="checkbox" :id="genre" :value="genre" v-model="filters.genres" />
                 <label :for="genre">{{ genre }} </label>
               </div>
@@ -83,8 +85,9 @@
             </span>
           </button>
           <div v-if="showDropdown.themes" class="dropdown-menu">
+            <input v-model="filters.searchTheme" placeholder="Search Themes" class="filter-search" />
             <div class="scrollable-list">
-              <div v-for="theme in themes" :key="theme" class="checkbox-item">
+              <div v-for="theme in filteredThemes" :key="theme" class="checkbox-item">
                 <input type="checkbox" :id="theme" :value="theme" v-model="filters.themes" />
                 <label :for="theme">{{ theme }} </label>
               </div>
@@ -98,12 +101,17 @@
     <ul class="song-grid">
       <li v-for="song in filteredSongs" :key="song.id" class="song-item">
         <h2>{{ song.title }} - {{ song.artist }}</h2>
-        <iframe v-if="song.youtube" :src="getEmbedUrl(song.youtube)" frameborder="0" allowfullscreen
+        <div class="lazy-iframe" v-if="!song.youtubeLoaded" @click="loadYouTube(song)">
+          <img :src="getThumbnailUrl(song.youtube)" alt="YouTube Thumbnail" class="youtube-thumbnail" />
+          <div class="play-icon">▶</div>
+        </div>
+        <iframe v-if="song.youtubeLoaded" :src="getEmbedUrl(song.youtube)" frameborder="0" allowfullscreen
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </li>
     </ul>
   </div>
 </template>
+
 
 
 
@@ -114,6 +122,7 @@ export default {
   data() {
     return {
       songs: [],
+      observer: null,
       keys: [
         "C major", "G major", "D major", "A major", "E major", "B major",
         "G-flat major", "D-flat major", "A-flat major", "E-flat major",
@@ -123,75 +132,138 @@ export default {
       ],
       genres: [],
       themes: [],
-
       filters: {
         title: "",
         artist: "",
         yearMin: null,
         yearMax: null,
-        keys: [], // Selected keys
+        keys: [],
         bpmMin: null,
         bpmMax: null,
         genres: [],
         themes: [],
+        searchKey: "", // New search field for keys
+        searchGenre: "", // New search field for genres
+        searchTheme: "", // New search field for themes
       },
       showDropdown: {
-        keys: false, // To toggle the dropdown menu
-        genres: false, // To toggle the dropdown menu
-        themes: false, // To toggle the dropdown menu
+        keys: false,
+        genres: false,
+        themes: false,
       },
-  };
-},
-computed: {
-  filteredSongs() {
-    return this.songs.filter((song) => {
-      return (
-        (!this.filters.title || song.title.toLowerCase().includes(this.filters.title.toLowerCase())) &&
-        (!this.filters.artist || song.artist.toLowerCase().includes(this.filters.artist.toLowerCase())) &&
-        (this.filters.yearMin === null || this.filters.yearMin === '' || song.year >= this.filters.yearMin) &&
-        (this.filters.yearMax === null || this.filters.yearMax === '' || song.year <= this.filters.yearMax) &&
-        (this.filters.keys.length === 0 || this.filters.keys.includes(song.key)) &&
-        (this.filters.bpmMin === null || this.filters.bpmMin === '' || song.bpm >= this.filters.bpmMin) &&
-        (this.filters.bpmMax === null || this.filters.bpmMax === '' || song.bpm <= this.filters.bpmMax) &&
-        (this.filters.genres.length === 0 || song.genres.some((genre) => this.filters.genres.includes(genre))) &&
-        (this.filters.themes.length === 0 || song.themes.some((theme) => this.filters.themes.includes(theme)))
-
+    };
+  },
+  computed: {
+    filteredKeys() {
+      return this.keys.filter((key) =>
+        key.toLowerCase().includes(this.filters.searchKey.toLowerCase())
       );
+    },
+    filteredGenres() {
+      return this.genres.filter((genre) =>
+        genre.toLowerCase().includes(this.filters.searchGenre.toLowerCase())
+      );
+    },
+    filteredThemes() {
+      return this.themes.filter((theme) =>
+        theme.toLowerCase().includes(this.filters.searchTheme.toLowerCase())
+      );
+    },
+    filteredSongs() {
+      return this.songs.filter((song) => {
+        return (
+          (!this.filters.title || song.title.toLowerCase().includes(this.filters.title.toLowerCase())) &&
+          (!this.filters.artist || song.artist.toLowerCase().includes(this.filters.artist.toLowerCase())) &&
+          (this.filters.yearMin === null || this.filters.yearMin === '' || song.year >= this.filters.yearMin) &&
+          (this.filters.yearMax === null || this.filters.yearMax === '' || song.year <= this.filters.yearMax) &&
+          (this.filters.keys.length === 0 || this.filters.keys.includes(song.key)) &&
+          (this.filters.bpmMin === null || this.filters.bpmMin === '' || song.bpm >= this.filters.bpmMin) &&
+          (this.filters.bpmMax === null || this.filters.bpmMax === '' || song.bpm <= this.filters.bpmMax) &&
+          (this.filters.genres.length === 0 || song.genres.some((genre) => this.filters.genres.includes(genre))) &&
+          (this.filters.themes.length === 0 || song.themes.some((theme) => this.filters.themes.includes(theme)))
+        );
+      });
+    },
+  },
+  methods: {
+    toggleDropdown(type) {
+      Object.keys(this.showDropdown).forEach((key) => {
+        this.showDropdown[key] = key === type ? !this.showDropdown[key] : false;
+      });
+    },
+    getEmbedUrl(youtube) {
+      const videoId = youtube.split("v=")[1]?.split("&")[0];
+      return `https://www.youtube.com/embed/${videoId}`;
+    },
+    getThumbnailUrl(youtube) {
+      const videoId = youtube.split("v=")[1]?.split("&")[0];
+      return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`;
+    },
+
+    loadYouTube(song) {
+      song.youtubeLoaded = true;
+    },
+
+    observeElements() {
+      const options = {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.1,
+      };
+
+      this.observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const song = this.songs.find(
+              (song) => `song-${song.id}` === entry.target.id
+            );
+            if (song) this.loadYouTube(song);
+          }
+        });
+      });
+
+      this.$nextTick(() => {
+        const items = document.querySelectorAll(".song-item");
+        items.forEach((item) => this.observer.observe(item));
+      });
+    },
+  },
+  created() {
+    SongService.getSongs().then((response) => {
+      this.songs = response.data.map((song) => ({
+        ...song,
+        youtubeLoaded: false, // New property for lazy loading
+      }));
+    });
+
+    SongService.getGenres().then((response) => {
+      this.genres = response.data;
+    });
+
+    SongService.getThemes().then((response) => {
+      this.themes = response.data;
     });
   },
-},
-methods: {
-  toggleDropdown(type) {
-    // Close other dropdowns and toggle the clicked one
-    Object.keys(this.showDropdown).forEach((key) => {
-      this.showDropdown[key] = key === type ? !this.showDropdown[key] : false;
-    });
-  },
-  getEmbedUrl(youtube) {
-    const videoId = youtube.split("v=")[1]?.split("&")[0];
-    return `https://www.youtube.com/embed/${videoId}`;
-  },
-},
-created() {
-  SongService.getSongs().then((response) => {
-    this.songs = response.data;
-  });
 
-  SongService.getGenres().then((response) => {
-    this.genres = response.data;
-  });
-
-  SongService.getThemes().then((response) => {
-    this.themes = response.data;
-  });
-},
+  mounted() {
+    this.observeElements(); // Set up IntersectionObserver
+  },
+  beforeUnmount() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
+  },
 };
 </script>
+
 
 
 <style scoped>
 body {
   font-family: 'Lucida Sans', sans-serif !important;
+}
+h3 {
+  color: white;
 }
 
 html,
@@ -285,4 +357,58 @@ h1 {
 .checkbox-item input {
   margin-right: 8px;
 }
+
+.filter-search {
+  width: 90%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  background-color: white;
+  border: 1px solid #ccc;
+  width: 200px;
+  z-index: 10;
+  padding: 10px;
+}
+
+.scrollable-list {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.checkbox-item {
+  padding: 8px;
+}
+
+.lazy-iframe {
+  position: relative;
+  cursor: pointer;
+  width: 100%;
+  height: 200px;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.youtube-thumbnail {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  color: white;
+  opacity: 0.8;
+  pointer-events: none;
+}
+
 </style>

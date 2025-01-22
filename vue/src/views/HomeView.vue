@@ -3,7 +3,6 @@
     <h1>AMPLIFY</h1>
     <h2>Advanced Music Playlist Intelligence for You</h2>
     <div class="center-container">
-   
       <general-playlist />
     </div>
     <p></p>
@@ -21,7 +20,18 @@ export default {
 
 <style scoped>
 .home {
+  padding-top: 20px;
   font-family: 'Lucida Sans', sans-serif;
+  background-color: black;
+  color: white;
+}
+
+.center-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: black;
 }
 
 html,body {
@@ -32,6 +42,10 @@ html,body {
 }
 h1, h2 {
   text-align: center;
+}
+
+h3 {
+  color: white;
 }
 
 </style>

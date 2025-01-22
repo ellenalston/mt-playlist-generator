@@ -4,7 +4,7 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'All I Have to Do Is Dream' AND artist = 'The Everly Brothers'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rock and Roll')),
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rock & Roll')),
 ((SELECT song_id FROM songs WHERE song_title = 'All I Have to Do Is Dream' AND artist = 'The Everly Brothers'),
  (SELECT genre_id FROM genres WHERE genre_name = 'Pop'));
 
@@ -21,7 +21,7 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'All Shook Up' AND artist = 'Elvis Presley'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rock and Roll')),
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rock & Roll')),
 ((SELECT song_id FROM songs WHERE song_title = 'All Shook Up' AND artist = 'Elvis Presley'),
  (SELECT genre_id FROM genres WHERE genre_name = 'Pop'));
 
@@ -39,13 +39,13 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'At the Hop' AND artist = 'Danny & the Juniors'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rock and Roll')),
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rock & Roll')),
 ((SELECT song_id FROM songs WHERE song_title = 'At the Hop' AND artist = 'Danny & the Juniors'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Doo-Wop'));
+ (SELECT genre_id FROM genres WHERE genre_name = 'Doo Wop'));
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'At the Hop' AND artist = 'Danny & the Juniors'),
- (SELECT theme_id FROM themes WHERE theme_name = 'Dance')),
+ (SELECT theme_id FROM themes WHERE theme_name = 'Dancing')),
 ((SELECT song_id FROM songs WHERE song_title = 'At the Hop' AND artist = 'Danny & the Juniors'),
  (SELECT theme_id FROM themes WHERE theme_name = 'Fun')),
 ((SELECT song_id FROM songs WHERE song_title = 'At the Hop' AND artist = 'Danny & the Juniors'),
@@ -91,7 +91,7 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Blue Suede Shoes' AND artist = 'Elvis Presley'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rock and Roll')),
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rock & Roll')),
 ((SELECT song_id FROM songs WHERE song_title = 'Blue Suede Shoes' AND artist = 'Elvis Presley'),
  (SELECT genre_id FROM genres WHERE genre_name = 'Rockabilly'));
 
@@ -109,9 +109,9 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Blueberry Hill' AND artist = 'Fats Domino'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rhythm and Blues')),
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rhythm & Blues')),
 ((SELECT song_id FROM songs WHERE song_title = 'Blueberry Hill' AND artist = 'Fats Domino'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rock and Roll'));
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rock & Roll'));
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Blueberry Hill' AND artist = 'Fats Domino'),
@@ -199,9 +199,9 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Earth Angel' AND artist = 'The Penguins'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Doo-Wop')),
+ (SELECT genre_id FROM genres WHERE genre_name = 'Doo Wop')),
 ((SELECT song_id FROM songs WHERE song_title = 'Earth Angel' AND artist = 'The Penguins'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rhythm and Blues'));
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rhythm & Blues'));
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Earth Angel' AND artist = 'The Penguins'),
@@ -217,7 +217,7 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Everyday' AND artist = 'Buddy Holly'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rock and Roll'));
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rock & Roll'));
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Everyday' AND artist = 'Buddy Holly'),
@@ -267,9 +267,9 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Get A Job' AND artist = 'The Silhouettes'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Doo-Wop')),
+ (SELECT genre_id FROM genres WHERE genre_name = 'Doo Wop')),
 ((SELECT song_id FROM songs WHERE song_title = 'Get A Job' AND artist = 'The Silhouettes'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rhythm and Blues'));
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rhythm & Blues'));
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Get A Job' AND artist = 'The Silhouettes'),
@@ -327,7 +327,7 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Jailhouse Rock' AND artist = 'Elvis Presley'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rock and Roll'));
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rock & Roll'));
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Jailhouse Rock' AND artist = 'Elvis Presley'),
@@ -341,7 +341,7 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Johnny B Goode' AND artist = 'Chuck Berry'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rock and Roll'));
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rock & Roll'));
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Johnny B Goode' AND artist = 'Chuck Berry'),
@@ -355,7 +355,7 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'La Bamba' AND artist = 'Ritchie Valens'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rock and Roll')),
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rock & Roll')),
 ((SELECT song_id FROM songs WHERE song_title = 'La Bamba' AND artist = 'Ritchie Valens'),
  (SELECT genre_id FROM genres WHERE genre_name = 'Chicano Rock'));
 
@@ -371,7 +371,7 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Let Me Be Your Teddy Bear' AND artist = 'Elvis Presley'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rock and Roll')),
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rock & Roll')),
 ((SELECT song_id FROM songs WHERE song_title = 'Let Me Be Your Teddy Bear' AND artist = 'Elvis Presley'),
  (SELECT genre_id FROM genres WHERE genre_name = 'Pop'));
 
@@ -419,9 +419,9 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Love Potion No. 9' AND artist = 'The Clovers'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rhythm and Blues')),
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rhythm & Blues')),
 ((SELECT song_id FROM songs WHERE song_title = 'Love Potion No. 9' AND artist = 'The Clovers'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Doo-Wop'));
+ (SELECT genre_id FROM genres WHERE genre_name = 'Doo Wop'));
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Love Potion No. 9' AND artist = 'The Clovers'),
@@ -467,7 +467,7 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Peggy Sue' AND artist = 'Buddy Holly'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rock and Roll'));
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rock & Roll'));
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Peggy Sue' AND artist = 'Buddy Holly'),
@@ -497,7 +497,7 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Rock Around the Clock' AND artist = 'Bill Haley & His Comets'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rock and Roll'));
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rock & Roll'));
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Rock Around the Clock' AND artist = 'Bill Haley & His Comets'),
@@ -513,9 +513,9 @@ INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_
 
 INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Rockin'' Robin' AND artist = 'Bobby Day'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rock and Roll')),
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rock & Roll')),
 ((SELECT song_id FROM songs WHERE song_title = 'Rockin'' Robin' AND artist = 'Bobby Day'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Rhythm and Blues'));
+ (SELECT genre_id FROM genres WHERE genre_name = 'Rhythm & Blues'));
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Rockin'' Robin' AND artist = 'Bobby Day'),
