@@ -24,15 +24,19 @@ export default {
   font-family: 'Lucida Sans', sans-serif;
   background-color: black;
   color: white;
+  width: 100vw; /* Full viewport width */
 }
 
 .center-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  color: black;
+  justify-content: center; /* Align the content horizontally */
+  align-items: flex-start; /* Align items at the top */
+  flex-wrap: wrap; /* Allow items to wrap to the next row */
+  width: 100%; /* Ensure it spans the full width */
+  margin: 0 auto; /* Center the container itself, if needed */
+  color: black
 }
+
 
 html,body {
   margin: 0;

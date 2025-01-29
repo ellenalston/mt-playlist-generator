@@ -33,6 +33,7 @@ INSERT INTO themes (theme_name) VALUES
 ('Gratitude'),
 ('Happiness'),
 ('Heartache'),
+('Heartbreak'),
 ('Holiday Spirit'),
 ('Home'),
 ('Hope'),

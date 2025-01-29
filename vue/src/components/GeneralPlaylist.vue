@@ -30,6 +30,27 @@
         <input v-model.number="filters.bpmMax" placeholder="Max BPM" type="number" />
       </div>
 
+      <!-- Meter Filter -->
+      <div class="meter-filter">
+        <h3>Filter by Meter</h3>
+        <div class="dropdown">
+          <button @click="toggleDropdown('meters')" class="dropdown-btn">
+            Select Meters
+            <span v-if="filters.meters.length > 0">
+              ({{ filters.meters.length }} selected)
+            </span>
+          </button>
+          <div v-if="showDropdown.meters" class="dropdown-menu">
+            <div class="scrollable-list">
+              <div v-for="meter in meters" :key="meter" class="checkbox-item">
+                <input type="checkbox" :id="meter" :value="meter" v-model="filters.meters" />
+                <label :for="meter">{{ meter }}</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- Key Filter -->
       <div class="key-filter">
         <h3>Filter by Key</h3>
@@ -67,7 +88,7 @@
             <div class="scrollable-list">
               <div v-for="genre in filteredGenres" :key="genre" class="checkbox-item">
                 <input type="checkbox" :id="genre" :value="genre" v-model="filters.genres" />
-                <label :for="genre">{{ genre }} </label>
+                <label :for="genre">{{ genre }}</label>
               </div>
             </div>
           </div>
@@ -89,12 +110,13 @@
             <div class="scrollable-list">
               <div v-for="theme in filteredThemes" :key="theme" class="checkbox-item">
                 <input type="checkbox" :id="theme" :value="theme" v-model="filters.themes" />
-                <label :for="theme">{{ theme }} </label>
+                <label :for="theme">{{ theme }}</label>
               </div>
             </div>
           </div>
         </div>
       </div>
+
     </div>
 
     <!-- Song Grid -->
@@ -105,12 +127,18 @@
           <img :src="getThumbnailUrl(song.youtube)" alt="YouTube Thumbnail" class="youtube-thumbnail" />
           <div class="play-icon">▶</div>
         </div>
-        <iframe v-if="song.youtubeLoaded" :src="getEmbedUrl(song.youtube)" frameborder="0" allowfullscreen
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+        <iframe
+          v-if="song.youtubeLoaded"
+          :src="getEmbedUrl(song.youtube)"
+          frameborder="0"
+          allowfullscreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        ></iframe>
       </li>
     </ul>
   </div>
 </template>
+
 
 
 
@@ -123,6 +151,7 @@ export default {
     return {
       songs: [],
       observer: null,
+      meters: ["4/4", "3/4", "6/8", "2/2"], // Add meter options
       keys: [
         "C major", "G major", "D major", "A major", "E major", "B major",
         "G-flat major", "D-flat major", "A-flat major", "E-flat major",
@@ -138,6 +167,7 @@ export default {
         yearMin: null,
         yearMax: null,
         keys: [],
+        meters: [],
         bpmMin: null,
         bpmMax: null,
         genres: [],
@@ -150,6 +180,7 @@ export default {
         keys: false,
         genres: false,
         themes: false,
+        meters: false,
       },
     };
   },
@@ -179,6 +210,7 @@ export default {
           (this.filters.keys.length === 0 || this.filters.keys.includes(song.key)) &&
           (this.filters.bpmMin === null || this.filters.bpmMin === '' || song.bpm >= this.filters.bpmMin) &&
           (this.filters.bpmMax === null || this.filters.bpmMax === '' || song.bpm <= this.filters.bpmMax) &&
+          (this.filters.meters.length === 0 || this.filters.meters.includes(song.meter)) &&
           (this.filters.genres.length === 0 || song.genres.some((genre) => this.filters.genres.includes(genre))) &&
           (this.filters.themes.length === 0 || song.themes.some((theme) => this.filters.themes.includes(theme)))
         );
@@ -262,6 +294,7 @@ export default {
 body {
   font-family: 'Lucida Sans', sans-serif !important;
 }
+
 h3 {
   color: white;
 }
@@ -287,7 +320,7 @@ body {
   /* Allow filters to wrap onto the next line if needed */
   justify-content: space-between;
   /* Distribute filters evenly */
-  gap: 20px;
+  gap: 0px;
   /* Add spacing between filters */
   margin-bottom: 20px;
 }
@@ -410,5 +443,4 @@ h1 {
   opacity: 0.8;
   pointer-events: none;
 }
-
 </style>
