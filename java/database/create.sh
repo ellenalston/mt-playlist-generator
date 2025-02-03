@@ -11,6 +11,7 @@ psql -U postgres -d $DATABASE -f "$BASEDIR/genres.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/themes.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/data1930s.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/data1940s.sql" &&
-psql -U postgres -d $DATABASE -f "$BASEDIR/data1950s.sql"
+psql -U postgres -d $DATABASE -f "$BASEDIR/data1950s.sql" &&
+psql -U postgres -d $DATABASE -f "$BASEDIR/data1960s.sql"
 
 
