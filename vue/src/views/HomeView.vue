@@ -21,7 +21,6 @@ export default {
 <style scoped>
 .home {
   padding-top: 20px;
-  font-family: 'Lucida Sans', sans-serif;
   background-color: black;
   color: white;
   width: 100vw; /* Full viewport width */
@@ -43,6 +42,15 @@ html,body {
   padding: 0;
   height: 100%;
   overflow-y: auto;
+}
+
+h1{
+  font-family: "Righteous", serif;
+  font-size: 40pt;
+}
+
+h2{
+  font-family: Arial, Helvetica, sans-serif;
 }
 h1, h2 {
   text-align: center;

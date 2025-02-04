@@ -122,7 +122,8 @@
     <!-- Song Grid -->
     <ul class="song-grid">
       <li v-for="song in filteredSongs" :key="song.id" class="song-item">
-        <h2>{{ song.title }} - {{ song.artist }}</h2>
+        <h1>{{ song.title }}</h1>
+        <h2>{{ song.artist }}</h2>
         <div class="lazy-iframe" v-if="!song.youtubeLoaded" @click="loadYouTube(song)">
           <img :src="getThumbnailUrl(song.youtube)" alt="YouTube Thumbnail" class="youtube-thumbnail" />
           <div class="play-icon">▶</div>
@@ -295,8 +296,16 @@ body {
   font-family: 'Lucida Sans', sans-serif !important;
 }
 
+h1{
+  font-family: "Righteous", serif;
+  font-size: 20pt;
+}
+h2{
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 h3 {
   color: white;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 html,

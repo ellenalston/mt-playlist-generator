@@ -14,5 +14,8 @@ psql -U postgres -d $DATABASE -f "$BASEDIR/data1940s.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/data1950s.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/data1960s.sql" &&
 psql -U postgres -d $DATABASE -f "$BASEDIR/data1970s.sql" &&
-psql -U postgres -d $DATABASE -f "$BASEDIR/data1980s.sql"
+psql -U postgres -d $DATABASE -f "$BASEDIR/data1980s.sql" &&
+psql -U postgres -d $DATABASE -f "$BASEDIR/data1990s.sql" &&
+psql -U postgres -d $DATABASE -f "$BASEDIR/data2000s.sql" &&
+psql -U postgres -d $DATABASE -f "$BASEDIR/data2010s.sql"
 

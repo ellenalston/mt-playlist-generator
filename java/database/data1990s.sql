@@ -20,7 +20,7 @@ INSERT INTO song_genre (song_id, genre_id) VALUES
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'All Star' AND artist = 'Smash Mouth'),
- (SELECT theme_id FROM themes WHERE theme_name = 'Self-confidence')),
+ (SELECT theme_id FROM themes WHERE theme_name = 'Self-Confidence')),
 ((SELECT song_id FROM songs WHERE song_title = 'All Star' AND artist = 'Smash Mouth'),
  (SELECT theme_id FROM themes WHERE theme_name = 'Individuality')),
 ((SELECT song_id FROM songs WHERE song_title = 'All Star' AND artist = 'Smash Mouth'),
@@ -118,7 +118,7 @@ INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Creep' AND artist = 'Radiohead'),
  (SELECT theme_id FROM themes WHERE theme_name = 'Alienation')),
 ((SELECT song_id FROM songs WHERE song_title = 'Creep' AND artist = 'Radiohead'),
- (SELECT theme_id FROM themes WHERE theme_name = 'Self-doubt')),
+ (SELECT theme_id FROM themes WHERE theme_name = 'Self-Doubt')),
 ((SELECT song_id FROM songs WHERE song_title = 'Creep' AND artist = 'Radiohead'),
  (SELECT theme_id FROM themes WHERE theme_name = 'Yearning'));
 
@@ -270,7 +270,7 @@ INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'In The Light' AND artist = 'DC Talk'),
  (SELECT theme_id FROM themes WHERE theme_name = 'Faith')),
 ((SELECT song_id FROM songs WHERE song_title = 'In The Light' AND artist = 'DC Talk'),
- (SELECT theme_id FROM themes WHERE theme_name = 'Self-improvement'));
+ (SELECT theme_id FROM themes WHERE theme_name = 'Self-Improvement'));
 
 --IRIS--
 INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_minute, youtube) VALUES
@@ -364,7 +364,7 @@ INSERT INTO song_genre (song_id, genre_id) VALUES
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'No Scrubs' AND artist = 'TLC'),
- (SELECT theme_id FROM themes WHERE theme_name = 'Self-respect')),
+ (SELECT theme_id FROM themes WHERE theme_name = 'Self-Respect')),
 ((SELECT song_id FROM songs WHERE song_title = 'No Scrubs' AND artist = 'TLC'),
  (SELECT theme_id FROM themes WHERE theme_name = 'Independence')),
 ((SELECT song_id FROM songs WHERE song_title = 'No Scrubs' AND artist = 'TLC'),
@@ -526,7 +526,7 @@ INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Wildflowers' AND artist = 'Tom Petty'),
  (SELECT theme_id FROM themes WHERE theme_name = 'Belonging')),
 ((SELECT song_id FROM songs WHERE song_title = 'Wildflowers' AND artist = 'Tom Petty'),
- (SELECT theme_id FROM themes WHERE theme_name = 'Comfort')));
+ (SELECT theme_id FROM themes WHERE theme_name = 'Comfort'));
 
 --WONDERWALL--
 INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_minute, youtube) VALUES
@@ -544,7 +544,7 @@ INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Wonderwall' AND artist = 'Oasis'),
  (SELECT theme_id FROM themes WHERE theme_name = 'Hope')),
 ((SELECT song_id FROM songs WHERE song_title = 'Wonderwall' AND artist = 'Oasis'),
- (SELECT theme_id FROM themes WHERE theme_name = 'Salvation')));
+ (SELECT theme_id FROM themes WHERE theme_name = 'Salvation'));
 
 --YOU ARE MINE--
 INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_minute, youtube) VALUES
@@ -560,7 +560,7 @@ INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'You Are Mine' AND artist = 'David Haas'),
  (SELECT theme_id FROM themes WHERE theme_name = 'Faith')),
 ((SELECT song_id FROM songs WHERE song_title = 'You Are Mine' AND artist = 'David Haas'),
- (SELECT theme_id FROM themes WHERE theme_name = 'Reassurance')));
+ (SELECT theme_id FROM themes WHERE theme_name = 'Reassurance'));
 
 --YOU'RE STILL THE ONE--
 INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_minute, youtube) VALUES
@@ -574,7 +574,7 @@ INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'You''re Still the One' AND artist = 'Shania Twain'),
  (SELECT theme_id FROM themes WHERE theme_name = 'Love')),
 ((SELECT song_id FROM songs WHERE song_title = 'You''re Still the One' AND artist = 'Shania Twain'),
- (SELECT theme_id FROM themes WHERE theme_name = 'Devotion')));
+ (SELECT theme_id FROM themes WHERE theme_name = 'Devotion'));
 
 --ZOMBIE--
 INSERT INTO songs (song_title, artist, release_year, song_key, meter, beats_per_minute, youtube) VALUES
@@ -584,7 +584,7 @@ INSERT INTO song_genre (song_id, genre_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Zombie' AND artist = 'The Cranberries'),
  (SELECT genre_id FROM genres WHERE genre_name = 'Protest')),
 ((SELECT song_id FROM songs WHERE song_title = 'Zombie' AND artist = 'The Cranberries'),
- (SELECT genre_id FROM genres WHERE genre_name = 'Alternative Rock')));
+ (SELECT genre_id FROM genres WHERE genre_name = 'Alternative Rock'));
 
 INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Zombie' AND artist = 'The Cranberries'),
@@ -592,4 +592,4 @@ INSERT INTO song_theme (song_id, theme_id) VALUES
 ((SELECT song_id FROM songs WHERE song_title = 'Zombie' AND artist = 'The Cranberries'),
  (SELECT theme_id FROM themes WHERE theme_name = 'Protest')),
 ((SELECT song_id FROM songs WHERE song_title = 'Zombie' AND artist = 'The Cranberries'),
- (SELECT theme_id FROM themes WHERE theme_name = 'Grief')));
+ (SELECT theme_id FROM themes WHERE theme_name = 'Grief'));
