@@ -354,6 +354,13 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
+.song-item h1 {
+  margin-bottom: 5px; /* Reduce space below the title */
+}
+
+.song-item h2 {
+  margin-top: 0; /* Remove extra space above the artist name */
+}
 
 iframe {
   width: 100%;
