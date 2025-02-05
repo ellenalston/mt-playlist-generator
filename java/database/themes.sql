@@ -130,7 +130,7 @@ INSERT INTO themes (theme_name) VALUES
 ('Journey'),
 ('Joy'),
 ('Leisure'),
-('Letting go'),
+('Letting Go'),
 ('Liberation'),
 ('Life'),
 ('Loneliness'),
