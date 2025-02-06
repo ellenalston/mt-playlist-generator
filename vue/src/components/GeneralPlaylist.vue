@@ -25,7 +25,7 @@
 
       <!-- BPM Filter -->
       <div class="bpm-filter">
-        <h3>Filter by Beats Per Minute</h3>
+        <h3>Filter by BPM</h3>
         <input v-model.number="filters.bpmMin" placeholder="Min BPM" type="number" />
         <input v-model.number="filters.bpmMax" placeholder="Max BPM" type="number" />
       </div>
