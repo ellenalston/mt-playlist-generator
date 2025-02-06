@@ -42,6 +42,7 @@
           </button>
           <div v-if="showDropdown.meters" class="dropdown-menu">
             <div class="scrollable-list">
+              <button @click="clearFilters('meters')" class="clear-btn"> Clear Filters</button>
               <div v-for="meter in meters" :key="meter" class="checkbox-item">
                 <input type="checkbox" :id="meter" :value="meter" v-model="filters.meters" />
                 <label :for="meter">{{ meter }}</label>
@@ -64,6 +65,7 @@
           <div v-if="showDropdown.keys" class="dropdown-menu">
             <input v-model="filters.searchKey" placeholder="Search Keys" class="filter-search" />
             <div class="scrollable-list">
+              <button @click="clearFilters('keys')" class="clear-btn"> Clear Filters</button>
               <div v-for="key in filteredKeys" :key="key" class="checkbox-item">
                 <input type="checkbox" :id="key" :value="key" v-model="filters.keys" />
                 <label :for="key">{{ key }}</label>
@@ -86,6 +88,7 @@
           <div v-if="showDropdown.genres" class="dropdown-menu">
             <input v-model="filters.searchGenre" placeholder="Search Genres" class="filter-search" />
             <div class="scrollable-list">
+              <button @click="clearFilters('genres')" class="clear-btn"> Clear Filters</button>
               <div v-for="genre in filteredGenres" :key="genre" class="checkbox-item">
                 <input type="checkbox" :id="genre" :value="genre" v-model="filters.genres" />
                 <label :for="genre">{{ genre }}</label>
@@ -108,6 +111,7 @@
           <div v-if="showDropdown.themes" class="dropdown-menu">
             <input v-model="filters.searchTheme" placeholder="Search Themes" class="filter-search" />
             <div class="scrollable-list">
+              <button @click="clearFilters('themes')" class="clear-btn"> Clear Filters</button>
               <div v-for="theme in filteredThemes" :key="theme" class="checkbox-item">
                 <input type="checkbox" :id="theme" :value="theme" v-model="filters.themes" />
                 <label :for="theme">{{ theme }}</label>
@@ -128,13 +132,8 @@
           <img :src="getThumbnailUrl(song.youtube)" alt="YouTube Thumbnail" class="youtube-thumbnail" />
           <div class="play-icon">▶</div>
         </div>
-        <iframe
-          v-if="song.youtubeLoaded"
-          :src="getEmbedUrl(song.youtube)"
-          frameborder="0"
-          allowfullscreen
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        ></iframe>
+        <iframe v-if="song.youtubeLoaded" :src="getEmbedUrl(song.youtube)" frameborder="0" allowfullscreen
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
       </li>
     </ul>
   </div>
@@ -224,6 +223,10 @@ export default {
         this.showDropdown[key] = key === type ? !this.showDropdown[key] : false;
       });
     },
+
+    clearFilters(filterType) {
+      this.filters[filterType] = [];
+    },
     getEmbedUrl(youtube) {
       const videoId = youtube.split("v=")[1]?.split("&")[0];
       return `https://www.youtube.com/embed/${videoId}`;
@@ -296,13 +299,15 @@ body {
   font-family: 'Lucida Sans', sans-serif !important;
 }
 
-h1{
+h1 {
   font-family: "Righteous", serif;
   font-size: 20pt;
 }
-h2{
+
+h2 {
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
 h3 {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
@@ -354,12 +359,15 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
+
 .song-item h1 {
-  margin-bottom: 5px; /* Reduce space below the title */
+  margin-bottom: 5px;
+  /* Reduce space below the title */
 }
 
 .song-item h2 {
-  margin-top: 0; /* Remove extra space above the artist name */
+  margin-top: 0;
+  /* Remove extra space above the artist name */
 }
 
 iframe {
